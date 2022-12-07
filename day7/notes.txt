@@ -1,0 +1,21 @@
+- can probably just a dictionary as the main structure
+    - start with a root in the dictionary
+    - if i see a directory, create a new dict with the key as the directory name (but what should be the value?)
+    - if i see a file, add it to the dict (how?)
+- start with a root in dict
+    - if i see a dir, add it as an empty dict
+    - if i see a file, use name as key and size as value
+    - every time i cd into a directory, push curr dict to a stack, and if i see a .., then i can just pop from stack as curr dict
+
+{
+    'root': {
+        'a': {
+            'e': {
+                'i': 584
+            }
+        }
+        'b.text': 14848514
+        'c.dat': 8504156
+        'd': {}
+    }
+}
