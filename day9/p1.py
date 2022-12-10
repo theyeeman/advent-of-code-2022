@@ -43,30 +43,10 @@ def debug_pretty_print(matrix):
     print('*************************')
 
 
-def debug_pretty_print_console_clear(matrix, direction, magnitude):
-    print(f'Moving {direction}, {magnitude} remaining iterations')
-    for row in matrix[::-1]:
-        print(''.join(row))
-    print('*************************')
-
-
 def debug_grid(head, tail):
     matrix = [['.' for q in range(10)] for _ in range(10)]
     matrix[tail.y][tail.x] = 'T'
     matrix[head.y][head.x] = 'H'
-    debug_pretty_print(matrix)
-
-
-def debug_grid_console_clear(head, tail, direction, magnitude):
-    matrix = [['.' for q in range(20)] for _ in range(20)]
-    matrix[tail.y][tail.x] = 'T'
-    matrix[head.y][head.x] = 'H'
-    debug_pretty_print_console_clear(matrix, direction, magnitude)
-
-
-def debug_grid_reference(matrix, head, tail):
-    # matrix[head.y][head.x] = 'H'
-    matrix[tail.y][tail.x] = 'T'
     debug_pretty_print(matrix)
 
 
@@ -76,21 +56,12 @@ def main():
     tail_spaces = set()
     head = Node(0, 0)
     tail = Node(0, 0)
-    os.system('cls')
 
     for row in inputs:
         direction, magnitude = parse_move(row)
 
         for _ in range(magnitude):
-            # print(f'head: {head}, tail: {tail}')
-            # debug_grid_reference(matrix, head, tail)
-            # time.sleep(0.1)
-            # os.system('cls')
-            # print(f'move direction: {direction}, magnitude: {magnitude}')
-            # debug_grid_console_clear(head, tail, direction, magnitude - _)
-
             tail_spaces.add((tail.x, tail.y))
-            # print((tail.x, tail.y))
             prev_head = head.copy()
             head.move_once(direction)
 
@@ -102,17 +73,8 @@ def main():
                     tail = prev_head.copy()
 
         tail_spaces.add((tail.x, tail.y))
-        
-
-            
-        # os.system('cls')
-        # debug_grid_console_clear(head, tail, direction, 0)
-
-
-       # print(f'head: {head}, tail: {tail}')
 
     print(len(tail_spaces))
-
     
 
 # Boilerplate code below
