@@ -13,18 +13,15 @@ def main():
 
     for input in inputs:
         instruction = input.split(' ')
-        print(instruction)
 
         if cycle_count in CHECKPOINTS:
             CHECKPOINTS.remove(cycle_count)
-            print(cycle_count, x)
             signal_strength += cycle_count * x
         
         if instruction[0] == 'noop':
             cycle_count += 1
             if cycle_count in CHECKPOINTS:
                 CHECKPOINTS.remove(cycle_count)
-                print(cycle_count, x)
                 signal_strength += cycle_count * x
         else:
             value = int(instruction[1])
@@ -32,20 +29,14 @@ def main():
 
             if cycle_count in CHECKPOINTS:
                 CHECKPOINTS.remove(cycle_count)
-                print(cycle_count, x)
                 signal_strength += cycle_count * x
 
-            print(f'cycle_count: {cycle_count}, x: {x}')
-    
             x += value
             cycle_count += 1
 
             if cycle_count in CHECKPOINTS:
                 CHECKPOINTS.remove(cycle_count)
-                print(cycle_count, x)
                 signal_strength += cycle_count * x
-
-        print(f'cycle_count: {cycle_count}, x: {x}')
 
     print(signal_strength)
 
