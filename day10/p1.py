@@ -5,14 +5,15 @@ CHECKPOINTS = [20, 60, 100, 140, 180, 220]
 
 
 def main():
-    # inputs = standard_func.get_input_as_str('input.txt')
-    inputs = standard_func.get_input_as_str('test.txt')
-    cycle_count = 0
+    inputs = standard_func.get_input_as_str('input.txt')
+    # inputs = standard_func.get_input_as_str('test.txt')
+    cycle_count = 1
     signal_strength = 0
     x = 1
 
     for input in inputs:
         instruction = input.split(' ')
+        print(instruction)
 
         if cycle_count in CHECKPOINTS:
             CHECKPOINTS.remove(cycle_count)
@@ -33,6 +34,8 @@ def main():
                 CHECKPOINTS.remove(cycle_count)
                 print(cycle_count, x)
                 signal_strength += cycle_count * x
+
+            print(f'cycle_count: {cycle_count}, x: {x}')
     
             x += value
             cycle_count += 1
@@ -41,6 +44,8 @@ def main():
                 CHECKPOINTS.remove(cycle_count)
                 print(cycle_count, x)
                 signal_strength += cycle_count * x
+
+        print(f'cycle_count: {cycle_count}, x: {x}')
 
     print(signal_strength)
 
