@@ -1,36 +1,26 @@
 import time
-import os
-
-CHECKPOINTS = [20, 60, 100, 140, 180, 220]
-
 
 def draw_on_crt(crt, cycle, x):
     modulo_cycle = cycle % 40
-    print(f'crt cycle: {cycle}, modulo_cycle: {modulo_cycle}, x: {x}')
 
     if modulo_cycle >= x-1 and modulo_cycle <= x+1:
-        print(f'drawing on position {cycle}')
-        crt[cycle] = '#'
+        crt[cycle] = '*'
 
 
 def print_crt(crt):
-    # crt = crt[1:]
     for i in range(6):
         print(''.join(crt[i*40:i*40 + 40]))
 
 
 def main():
-    os.system('cls')
     inputs = standard_func.get_input_as_str('input.txt')
     # inputs = standard_func.get_input_as_str('test.txt')
     cycle_count = 0
     x = 1
-    crt = ['.' for _ in range(241)]
+    crt = [' ' for _ in range(241)]
 
     for input in inputs:
         instruction = input.split(' ')
-        print(f'instruction: {instruction}')
-        print(f'before: cycle_count: {cycle_count}, x: {x}')
 
         draw_on_crt(crt, cycle_count, x)
         
@@ -49,8 +39,6 @@ def main():
 
             draw_on_crt(crt, cycle_count, x)
         
-        print(f'after: cycle_count: {cycle_count}, x: {x}')
-
     print_crt(crt)
 
 
